@@ -21,7 +21,32 @@ def softmax(x):
     """
 
     ### YOUR CODE HERE
-    raise NotImplementedError
+    
+    # Case N > 1
+    if len(x.shape) > 1:
+        
+        ## normalization part
+
+        # First define the column containing the max of each row in x
+        max_row = x.max(axis = 1).reshape((x.shape[0], 1))
+        # Then remove this max to the dataset
+        x -= max_row
+
+        ## computation of softmax
+
+        x = np.exp(x)
+        denominator = x.sum(axis = 1).reshape(x.shape[0], 1)
+        x /= denominator
+        
+    else:
+        
+        ## normalization part
+        
+        max_row = x.max()
+        x -= max_row
+        x = np.exp(x)
+        denominator = x.sum()
+        x /= denominator
     ### END YOUR CODE
     
     return x
@@ -31,23 +56,23 @@ def test_softmax_basic():
     Some simple tests to get you started. 
     Warning: these are not exhaustive.
     """
-    print "Running basic tests..."
+    print("Running basic tests...")
     test1 = softmax(np.array([1,2]))
-    print test1
+    print(test1)
     assert np.amax(np.fabs(test1 - np.array(
         [0.26894142,  0.73105858]))) <= 1e-6
 
     test2 = softmax(np.array([[1001,1002],[3,4]]))
-    print test2
+    print(test2)
     assert np.amax(np.fabs(test2 - np.array(
         [[0.26894142, 0.73105858], [0.26894142, 0.73105858]]))) <= 1e-6
 
     test3 = softmax(np.array([[-1001,-1002]]))
-    print test3
+    print(test3)
     assert np.amax(np.fabs(test3 - np.array(
         [0.73105858, 0.26894142]))) <= 1e-6
 
-    print "You should verify these results!\n"
+    print("You should verify these results!\n")
 
 def test_softmax():
     """ 
@@ -56,7 +81,7 @@ def test_softmax():
     This function will not be called by the autograder, nor will
     your tests be graded.
     """
-    print "Running your tests..."
+    print("Running your tests...")
     ### YOUR CODE HERE
     raise NotImplementedError
     ### END YOUR CODE  

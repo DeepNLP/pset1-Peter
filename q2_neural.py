@@ -44,7 +44,7 @@ def sanity_check():
     Set up fake data and parameters for the neural network, and test using 
     gradcheck.
     """
-    print "Running sanity check..."
+    print("Running sanity check...")
 
     N = 20
     dimensions = [10, 5, 10]
