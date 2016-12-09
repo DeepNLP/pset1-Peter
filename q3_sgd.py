@@ -77,7 +77,7 @@ def sgd(f, x0, step, iterations, postprocessing = None, useSaved = False, PRINT_
         ### YOUR CODE HERE
 
         cost, grad = f(x)
-        x -= step * grad
+        x -= (step / (1 + iter)) * grad
         x = postprocessing(x)
         
         ### END YOUR CODE

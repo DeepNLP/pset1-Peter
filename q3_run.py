@@ -35,10 +35,10 @@ wordVectors = (wordVectors0[:nWords,:] + wordVectors0[nWords:,:])
 # Visualize the word vectors you trained
 _, wordVectors0, _ = load_saved_params()
 wordVectors = (wordVectors0[:nWords,:] + wordVectors0[nWords:,:])
-visualizeWords = ["the", "a", "an", ",", ".", "?", "!", "``", "''", "--", 
-    "good", "great", "cool", "brilliant", "wonderful", "well", "amazing",
-    "worth", "sweet", "enjoyable", "boring", "bad", "waste", "dumb", 
-    "annoying"]
+visualizeWords = [b"the", b"a", b"an", b",", b".", b"?", b"!", b"``", b"''", b"--", 
+    b"good", b"great", b"cool", b"brilliant", b"wonderful", b"well", b"amazing",
+    b"worth", b"sweet", b"enjoyable", b"boring", b"bad", b"waste", b"dumb", 
+    b"annoying"]
 visualizeIdx = [tokens[word] for word in visualizeWords]
 visualizeVecs = wordVectors[visualizeIdx, :]
 temp = (visualizeVecs - np.mean(visualizeVecs, axis=0))

@@ -141,7 +141,7 @@ class StanfordSentiment:
         sentences = self.sentences()
         for i in range(self.numSentences()):
             sentence = sentences[i]
-            full_sent = " ".join(sentence).replace('-lrb-', '(').replace('-rrb-', ')')
+            full_sent = b' '.join(sentence).replace('-lrb-', '(').replace('-rrb-', ')')
             sent_labels[i] = labels[dictionary[full_sent]]
             
         self._sent_labels = sent_labels
